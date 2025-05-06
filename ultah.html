@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>Ucapan Ulang Tahun untuk Arpa dari Abng Sayang</title>
+<style>
+  /* Reset & base styling */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body, html {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .container {
+    width: 90vw;
+    max-width: 350px;
+    height: 600px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    padding: 30px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    letter-spacing: 0.15em;
+    text-shadow: 0 0 15px #fff5bb, 0 0 30px #ffd966;
+    animation: pulseGlow 3.5s ease-in-out infinite;
+  }
+  p.greeting {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    text-shadow: 0 0 10px #fff9a8;
+  }
+  p.from {
+    font-size: 1rem;
+    font-style: italic;
+    text-shadow: 0 0 8px #ffdd99;
+  }
+
+  /* Confetti blocks */
+  .confetti {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    opacity: 0;
+    pointer-events: none;
+    animation-timing-function: ease-in-out;
+    will-change: transform, opacity;
+  }
+  /* Confetti colors */
+  .confetti.red { background-color: #ff4d4d; }
+  .confetti.orange { background-color: #ffa64d; }
+  .confetti.yellow { background-color: #fff04d; }
+  .confetti.green { background-color: #4dff88; }
+  .confetti.blue { background-color: #4da6ff; }
+  .confetti.purple { background-color: #b84dff; }
+
+  @keyframes pulseGlow {
+    0%, 100% {
+      text-shadow: 0 0 15px #fff5bb, 0 0 30px #ffd966;
+      color: #fff;
+    }
+    50% {
+      text-shadow: 0 0 25px #fffdd0, 0 0 40px #ffe680;
+      color: #fffce6;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="container" aria-label="Ucapan ulang tahun untuk Arpa dari Abng Sayang">
+    <h1>Selamat Ulang Tahun, Arpa!</h1>
+    <p class="greeting">Semoga harimu penuh kebahagiaan dan cinta.</p>
+    <p class="from">From Abng Sayang</p>
+  </div>
+<script>
+  const container = document.querySelector('.container');
+  const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple'];
+
+  function createConfetti() {
+    const confetti = document.createElement('div');
+    confetti.classList.add('confetti');
+    confetti.classList.add(colors[Math.floor(Math.random() * colors.length)]);
+    confetti.style.left = (Math.random() * 100) + '%';
+    confetti.style.top = '-10px';
+    const size = 6 + Math.random() * 6;
+    confetti.style.width = size + 'px';
+    confetti.style.height = size + 'px';
+    confetti.style.opacity = '1';
+    container.appendChild(confetti);
+
+    const fallDuration = 3000 + Math.random() * 2000;
+    const rotateAngle = (Math.random() * 360) + 360;
+    const horizontalDrift = (Math.random() - 0.5) * 250;
+    const fallDistance = 600 + Math.random() * 200;
+
+    confetti.animate([
+      { transform: 'translate(0, 0) rotate(0deg)', opacity: 1 },
+      { transform: `translate(${horizontalDrift}px, ${fallDistance}px) rotate(${rotateAngle}deg)`, opacity: 0 }
+    ], {
+      duration: fallDuration,
+      easing: 'ease-out',
+      fill: 'forwards'
+    });
+
+    setTimeout(() => {
+      confetti.remove();
+    }, fallDuration);
+  }
+
+  function launchConfettiBurst() {
+    for(let i = 0; i < 15; i++) {
+      createConfetti();
+    }
+  }
+
+  setInterval(launchConfettiBurst, 350);
+</script>
+</body>
+</html>
